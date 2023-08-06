@@ -5,7 +5,7 @@ Certainly! Here's the provided README in GitHub Markdown flavor:
 ## Semantic Relatedness Annotation Pipeline
 
 ### Overview
-This repository provides a comprehensive pipeline to find semantically related sentences in a given text, generate tuples for best-worst-scaling annotation, format the tuples for Label Studio annotation, process the annotations, and finally create pairs with scores. This README will guide you through the sequence of tasks to achieve this.
+This repository provides a pipeline to find semantically related sentences in a given text, generate tuples for best-worst-scaling annotation, format the tuples for Label Studio annotation, process the annotations, and finally create pairs with scores. This README will guide you through the sequence of tasks to achieve this.
 
 ### Sequence of Tasks:
 
