@@ -1,5 +1,3 @@
-Certainly! Here's the provided README in GitHub Markdown flavor:
-
 ---
 
 ## Semantic Relatedness Annotation Pipeline
