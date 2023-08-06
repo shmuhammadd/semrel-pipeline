@@ -65,7 +65,7 @@ python create_pair_and_scores.py [OPTIONS]
 ### Note:
 Ensure you have all the required dependencies installed and always provide the correct paths to the scripts and data files.
 
-### Conclusion:
-By following the above steps, you can seamlessly find semantically related sentences, generate tuples for annotation, process the annotations, and create pairs with scores. If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
+
+If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
 
 ---
