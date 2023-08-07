@@ -8,23 +8,6 @@ This repository provides a pipeline to find semantically related sentences in a 
 
 ### Sequence of Tasks:
 
-<<<<<<< HEAD
-1.  **Find Semantically Related Sentences**:
-    -   The first step is to find sentences that are semantically related in a given text. This is achieved using lexical overlap as a measure of semantic relatedness.
-    -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
-2.  **Generate Best-Worst-Scaling Tuples**:
-    -   Once you have the semantically related sentences, the next step is to generate tuples for best-worst-scaling annotation.
-    -   Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
-3.  **Format Tuples for Label Studio Annotation**:
-    -   With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
-    -   Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
-4.  **Process Annotations**:
-    -   After completing the annotation in Label Studio, you can process the annotations using the following script.
-    -   Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
-5.  **Create Pairs and Scores**:
-    -   The final step is to create pairs and their corresponding scores based on the processed annotations.
-    -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
-=======
 1. **Find Semantically Related Sentences**: 
    - The first step is to find sentences that are semantically related in a given text. This is achieved using lexical overlap as a measure of semantic relatedness.
    - Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
@@ -47,7 +30,6 @@ This repository provides a pipeline to find semantically related sentences in a 
 5. **Create Pairs and Scores**: 
    - The final step is to create pairs and their corresponding scores based on the processed annotations.
    - Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
->>>>>>> 2cb542296a43f436e29036e477e660d5e390b9e8
 
 ### Usage:
 
@@ -125,13 +107,6 @@ python create_pair_and_scores.py [OPTIONS]
 ```
 
 ### Note:
-<<<<<<< HEAD
-
-Ensure you have all the required dependencies installed and always provide the correct paths to the scripts and data files.
-
-If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
-=======
 Ensure you provide the correct paths to the scripts and data files. If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
->>>>>>> 2cb542296a43f436e29036e477e660d5e390b9e8
 
 ------------------------------------------------------------------------
