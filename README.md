@@ -21,7 +21,8 @@ This repository provides a pipeline to find semantically related sentences in a 
 3. **Format Tuples for Label Studio Annotation**: 
    - With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
    - Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
-   - Ask Nedjma to add you in LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup. 
+   - Ask Nedjma to add you in LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup.
+   - Use the Annotation guide [here](https://docs.google.com/document/d/1qwS9P-eRhgQw-JYMpWyOoTusBtuuxWCXEWnZZ-7LpBg/edit?usp=sharing)
 
 4. **Process Annotations**: 
    - After completing the annotation in Label Studio, you can process the annotations using the following script.
