@@ -8,28 +8,24 @@ This repository provides a pipeline to find semantically related sentences in a 
 
 ### Sequence of Tasks:
 
-1. **Find Semantically Related Sentences**: 
-   - The first step is to find sentences that are semantically related in a given text. This is achieved using lexical overlap as a measure of semantic relatedness.
-   - Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
-   - Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
-
-2. **Generate Best-Worst-Scaling Tuples**: 
-   - Once you have the semantically related sentences, the next step is to generate tuples for best-worst-scaling annotation.
-   - Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
-   - Visit Saif Mohammad's website for more details [here](https://www.saifmohammad.com/WebPages/BestWorst.html)
-
-3. **Format Tuples for Label Studio Annotation**: 
-   - With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
-   - Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
-   - Ask Nedjma to add you in LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup. 
-
-4. **Process Annotations**: 
-   - After completing the annotation in Label Studio, you can process the annotations using the following script.
-   - Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
-
-5. **Create Pairs and Scores**: 
-   - The final step is to create pairs and their corresponding scores based on the processed annotations.
-   - Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
+1.  **Find Semantically Related Sentences**:
+    -   The first step is to find sentences that are semantically related in a given text. This is achieved using lexical overlap as a measure of semantic relatedness.
+    -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
+    -   Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
+2.  **Generate Best-Worst-Scaling Tuples**:
+    -   Once you have the semantically related sentences, the next step is to generate tuples for best-worst-scaling annotation.
+    -   Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
+    -   Visit Saif Mohammad's website for more details [here](https://www.saifmohammad.com/WebPages/BestWorst.html)
+3.  **Format Tuples for Label Studio Annotation**:
+    -   With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
+    -   Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
+    -   Ask Nedjma to add you in LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup.
+4.  **Process Annotations**:
+    -   After completing the annotation in Label Studio, you can process the annotations using the following script.
+    -   Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
+5.  **Create Pairs and Scores**:
+    -   The final step is to create pairs and their corresponding scores based on the processed annotations.
+    -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
 
 ### Usage:
 
@@ -51,9 +47,7 @@ perl generate-BWS-tuples.pl [OPTIONS]
 python label_studio_annotation_format.py -i [INPUT_TUPLES] -o [OUTPUT_PATH]
 ```
 
-Where: 
-- `INPUT_TUPLES`: Path to the tsv file containing the tuples. 
-- `OUTPUT_PATH`: Output path for the annotation samples.
+Where: - `INPUT_TUPLES`: Path to the tsv file containing the tuples. - `OUTPUT_PATH`: Output path for the annotation samples.
 
 Example:
 
@@ -73,11 +67,11 @@ python process_annotations.py [OPTIONS]
 
 -   `'id_to_item.csv'` -- containing the sentence pairs and their IDs. E.g.
 
-| item                                     | id  |
-|------------------------------------------|-----|
-| this is sentence1. \\n this is sentence2 | 1   |
-| this is sentence3. \\n this is sentence4 | 2   |
-| this is sentence5. \\n this is sentence6 | 3   |
+| item                                      | id  |
+|-------------------------------------------|-----|
+| this is sentence1. \\n this is sentence2. | 1   |
+| this is sentence3. \\n this is sentence4. | 2   |
+| this is sentence5. \\n this is sentence6. | 3   |
 
 -   `'annotation_to_eval.csv'` -- containing the sentence pairs (listed by IDs) and their best-pair and worst-pair annotations. E.g.
 
@@ -107,6 +101,7 @@ python create_pair_and_scores.py [OPTIONS]
 ```
 
 ### Note:
+
 Ensure you provide the correct paths to the scripts and data files. If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
 
 ------------------------------------------------------------------------
