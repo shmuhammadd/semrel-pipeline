@@ -9,7 +9,7 @@ This repository provides a pipeline to find semantically related sentences in a 
 ### Sequence of Tasks:
 
 1. **Find Semantically Related Sentences**: 
-   - The first step is to find sentences that are semantically related in a given text. This is achieved using lexical overlap as a measure of semantic relatedness.
+   - The first step is to find sentences that are semantically related in a given a corpus of text. This is achieved using lexical overlap as a measure of semantic relatedness.
    - Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
    - Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
 
