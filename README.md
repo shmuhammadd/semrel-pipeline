@@ -30,7 +30,7 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   After completing the annotation in Label Studio, you can process the annotations using the following script.
     -   Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
 5.  - **Calculate Semantic Relatedness Score**
-    -   Script: [`annotations`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/get-scores-from-BWS-annotations-counting.pl)
+    -   Script: [`get-scores-from-BWS-annotations-counting.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/get-scores-from-BWS-annotations-counting.pl)
 6.  **Create Pairs and Scores**:
     -   The final step is to create pairs and their corresponding scores based on the processed annotations.
     -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
