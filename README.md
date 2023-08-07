@@ -17,6 +17,7 @@ This repository provides a pipeline to find semantically related sentences in a 
    - Once you have the semantically related sentences, the next step is to generate tuples for best-worst-scaling annotation.
    - Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
    - Visit Saif Mohammad's website for more details [here](https://www.saifmohammad.com/WebPages/BestWorst.html)
+   - [optional] Read the paper to understand more about Best–Worst Scaling [Best–Worst Scaling More Reliable than Rating Scales: A Case Study on Sentiment Intensity Annotation](https://www.saifmohammad.com/WebDocs/BWS-reliable-ACL2017.pdf)
 
 3. **Format Tuples for Label Studio Annotation**: 
    - With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
