@@ -66,9 +66,6 @@ python create_pair_and_scores.py [OPTIONS]
 ```
 
 ### Note:
-Ensure you have all the required dependencies installed and always provide the correct paths to the scripts and data files.
-
-
-If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
+Ensure you provide the correct paths to the scripts and data files. If you encounter any issues or have suggestions, please raise an issue or submit a pull request.
 
 ---
