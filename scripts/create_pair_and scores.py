@@ -45,6 +45,6 @@ except:
 scored_annotations = pd.merge(scored_annotations, id_to_item, on='id', how='inner')
 
 # save the processed annotations
-scored_annotations[['item', 'score']].to_csv(os.path.join(output_dir, 'scored_annotations.csv'), index=False)
+scored_annotations[['item', 'score']].to_csv(os.path.join(output_dir, 'scored_annotations.tsv'), sep='\t', index=False)
 
-print('Processed annotations saved to {}.'.format(os.path.join(output_dir, 'scored_annotations.csv')))
+print('Processed annotations saved to {}.'.format(os.path.join(output_dir, 'scored_annotations.tsv')))

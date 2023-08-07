@@ -71,7 +71,7 @@ python process_annotations.py [OPTIONS]
 
 **OUTPUT:**
 
--   `'id_to_item.csv'` -- containing the sentence pairs and their IDs. E.g.
+-   `'data/id_to_item.tsv'` -- containing the sentence pairs and their IDs. E.g.
 
 | item                                      | id  |
 |-------------------------------------------|-----|
@@ -79,7 +79,7 @@ python process_annotations.py [OPTIONS]
 | this is sentence3. \\n this is sentence4. | 2   |
 | this is sentence5. \\n this is sentence6. | 3   |
 
--   `'annotation_to_eval.csv'` -- containing the sentence pairs (listed by IDs) and their best-pair and worst-pair annotations. E.g.
+-   `'data/annotation_to_eval.tsv'` -- containing the sentence pairs (listed by IDs) and their best-pair and worst-pair annotations. E.g.
 
 | Item1 | Item2 | Item3 | Item4 | BestItem | WorstItem |
 |-------|-------|-------|-------|----------|-----------|
@@ -89,10 +89,12 @@ python process_annotations.py [OPTIONS]
 #### 5. Calculate Semantic Relatedness Score
 
 ``` bash
-perl get-scores-from-BWS-annotations-counting.pl data/annotation_to_eval.csv data
+perl get-scores-from-BWS-annotations-counting.pl data/annotation_to_eval.tsv data/pairs-scores.tsv
 ```
 
 **OUTPUT:**
+
+-   `'data/pairs-scores.tsv'` -- file containing the sentence pairs (listed by IDs) and their semantic relatedness scores. E.g.
 
 | id  | score |
 |-----|-------|
@@ -103,8 +105,18 @@ perl get-scores-from-BWS-annotations-counting.pl data/annotation_to_eval.csv dat
 #### 6. Create Pairs and Scores:
 
 ``` bash
-python create_pair_and_scores.py [OPTIONS]
+python create_pair_and_scores.py -i data/id_to_item.tsv -s data/pairs-scores.tsv -o data
 ```
+
+**OUTPUT:**
+
+-   `'data/scored_annotations.tsv'` -- file containing the sentence pairs (listed by IDs) and their semantic relatedness scores. E.g.
+
+| item                                      | score  |
+|-------------------------------------------|--------|
+| this is sentence1. \\n this is sentence2. | 1.0    |
+| this is sentence3. \\n this is sentence4. | 0.75   |
+| this is sentence5. \\n this is sentence6. | 0.5    |
 
 ### Note:
 

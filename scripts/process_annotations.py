@@ -79,7 +79,7 @@ for col in df.columns:
 id_df = pd.DataFrame(item_to_id.items(), columns=['item', 'id'])
 
 # save the processed annotations and the index to item mapping
-df.to_csv(os.path.join(output_dir, 'annotation_to_eval.csv'), index=False)
-id_df.to_csv(os.path.join(output_dir, 'id_to_item.csv'), index=False)
+df.to_csv(os.path.join(output_dir, 'annotation_to_eval.tsv'), sep='\t', index=False)
+id_df.to_csv(os.path.join(output_dir, 'id_to_item.tsv'), sep='\t', index=False)
 
-print('saved processed files to:', os.path.join(output_dir, 'annotation_to_eval.csv'), 'and', os.path.join(output_dir, 'id_to_item.csv'))
+print('saved processed files to:', os.path.join(output_dir, 'annotation_to_eval.tsv'), 'and', os.path.join(output_dir, 'id_to_item.tsv'))
