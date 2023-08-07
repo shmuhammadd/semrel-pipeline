@@ -126,6 +126,6 @@ s_p = find_lexical_overlap(text, args.stopwords, args.maximum_matches, args.remo
 df = pd.DataFrame(s_p, columns=["Sentence 1", "Sentence 2"])
 
 # Save the semantically-related sentences
-df.to_csv(os.path.join(args.output, 'output.csv'), index=False)
+df.to_csv(os.path.join(args.output, 'semantic_related_pairs.tsv'), sep='\t', index=False)
 
-print('Saved the semantically-related sentences to', os.path.join(args.output, 'output.tsv'), 'successfully.')
+print('Saved the semantically-related sentences to', os.path.join(args.output, 'semantic_related_pairs.tsv'), 'successfully.')
