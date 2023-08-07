@@ -15,7 +15,7 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
     -   Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
 2.  **Generate Best-Worst-Scaling Tuples**:
-    -   Once you have the semantically related sentences, the next step is to generate tuples for best-worst-scaling annotation.
+    -   Once you have the semantically related sentence pairs, the next step is to generate tuples for best-worst-scaling annotation.
     -   Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
     -   Visit Saif Mohammad's website for more details [here](https://www.saifmohammad.com/WebPages/BestWorst.html)
     -   \[optional\] Read the paper to understand more about Best--Worst Scaling [Best--Worst Scaling More Reliable than Rating Scales: A Case Study on Sentiment Intensity Annotation](https://www.saifmohammad.com/WebDocs/BWS-reliable-ACL2017.pdf)
