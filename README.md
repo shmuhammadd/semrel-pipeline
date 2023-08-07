@@ -4,12 +4,14 @@
 
 ### Overview
 
-This repository provides a pipeline to find semantically related sentences in a given text, generate tuples for best-worst-scaling annotation, format the tuples for Label Studio annotation, process the annotations, and finally create pairs with scores. This README will guide you through the sequence of tasks to achieve this.
+When creating a semantic relatedness dataset, randomly picking sentences from a corpus to form pairs will likely create mostly unrelated sentence pairs. Also, we want the dataset to include a wide variety of related sentences (in domain, structure, relatedness score, etc.) Thus, when creating sentence pairs that people will annotate for relatedness, we need to sample sentences in some clever way.
+ 
+This repository provides a pipeline to find pairs of sentences that are likely to be semantically related in a given text, generate tuples for best-worst-scaling annotation, format the tuples for Label Studio annotation, process the annotations, and finally create pairs with scores. This README will guide you through the sequence of tasks to achieve this.
 
 ### Sequence of Tasks:
 
-1.  **Find Semantically Related Sentences**:
-    -   The first step is to find sentences that are semantically related in a given a corpus of text. This is achieved using lexical overlap as a measure of semantic relatedness.
+1.  **Find a Wide Variety of Semantically Related Pairs**:
+    -   The first step is to find sentences that are semantically related in a given a corpus of text. There are many ways to achieve this, one way is lexical overlap, and here we have scripts for lexical overlap as a measure of semantic relatedness.
     -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
     -   Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
 2.  **Generate Best-Worst-Scaling Tuples**:
