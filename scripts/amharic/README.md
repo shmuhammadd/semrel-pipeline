@@ -1,4 +1,4 @@
-The relatedness tuples for ***Amahric semantic relatedness** task are generated from 9 million sentences which are collected from different news portals.
+The relatedness tuples for **Amahric semantic relatedness** task are generated from 9 million sentences which are collected from different news portals.
 
 We have used the **sklearn** library, mainly from the **sklearn.metrics.pairwise** module, the `cosine_similarity` function to compute similarity. We have discarded sentences below a similarity score of less than 0.4
 
