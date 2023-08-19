@@ -10,7 +10,7 @@ Since the similarity function took longer time, we have splitted the file into m
 The `generate_run_sh.py` file produce lines that can be run in parallel such as the following
 ```
 python similarity.py -i ./data/amhclean/amh_part_aa& 
-python similarity.py -i.data/amhclean/amh_part_aq&
+python similarity.py -i ./data/amhclean/amh_part_aq&
 python similarity.py -i ./data/amhclean/amh_part_bg& 
 
 ```
