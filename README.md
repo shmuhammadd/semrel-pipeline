@@ -33,10 +33,11 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
   
       
-6.  **Calculate Semantic Relatedness Score**
-    -   Script: [`get-scores-from-BWS-annotations-counting.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/get-scores-from-BWS-annotations-counting.pl)
-7.  **Create Pairs and Scores**:
-    -   The final step is to create pairs and their corresponding scores based on the processed annotations.
+6.  **Calculate the Semantic Relatedness Pairs and Score, and the SHR score**
+    -   Run the following bash script: [`process_annotations.sh`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/process_annotations.sh)
+    -   After running the above bash, it will generate:
+
+        1. eating the The final step is to create pairs and their corresponding scores based on the processed annotations.
     -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
 
 ### Usage
