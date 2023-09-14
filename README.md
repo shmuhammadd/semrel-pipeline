@@ -29,12 +29,13 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   How much data to annotate? A few thousand instances per language are good (e.g., 3000).
     -   How many annotators? You can use multiple 2: 2 or 4 annotators
 4.  **Process Annotations**:
-    -   After completing the annotation in Label Studio, you can process the annotations using the following script.
-    -   Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
+    -   After completing the annotation in Label Studio, you can process the annotations using the following Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
+    -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
+  
       
-5.  **Calculate Semantic Relatedness Score**
+6.  **Calculate Semantic Relatedness Score**
     -   Script: [`get-scores-from-BWS-annotations-counting.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/get-scores-from-BWS-annotations-counting.pl)
-6.  **Create Pairs and Scores**:
+7.  **Create Pairs and Scores**:
     -   The final step is to create pairs and their corresponding scores based on the processed annotations.
     -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
 
