@@ -94,7 +94,11 @@ python label_studio_annotation_format.py -i data/tuples.tsv -o data/
 
 #### 4. Process Annotations
 
-After annotation, export the files as `'.tsv'` and pass the file as input to the following script.
+After annotation and you are using LabelStudio, export the annotation file files as `'.tsv'`.
+
+After annotation, and you are using Potato, export the annotation.
+
+Run the following script and it will generate x and y:
 
 ``` bash
 python process_annotations.py -i data/exported_annotations.tsv -o data/
