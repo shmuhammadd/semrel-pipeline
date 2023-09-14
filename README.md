@@ -110,8 +110,10 @@ Below is an example of LabelStudio Output.
 | sentence1. | sentence2. | sentence1. | sentence3. | sentence1. | sentence4. | sentence2. | sentence3. |
 | sentence3. | sentence4. | sentence2. | sentence4. | sentence1. | sentence4. | sentence1. | sentence2. |
 
+Below is an example of Potato Output.
 
-"<div class=""tuple""><b>PAIR A</b><br/>1. sentence1.<br/>2. sentence2 </div><br/><div class=""tuple""><b>PAIR B</b><br/>1. sentence1.  <br/>2. sentence3.</div><br/><div class=""tuple""><b>PAIR C</b><br/>1. sentence1 <br/>2.sentence4.</div><br/><div class=""tuple""><b>PAIR D</b><br/>1. sentence2.<br/>2. sentence3.</div>",tuple_1
+`
+"<div class=""tuple""><b>PAIR A</b><br/>1. sentence1.<br/>2. sentence2 </div><br/><div class=""tuple""><b>PAIR B</b><br/>1. sentence1.  <br/>2. sentence3.</div><br/><div class=""tuple""><b>PAIR C</b><br/>1. sentence1 <br/>2.sentence4.</div><br/><div class=""tuple""><b>PAIR D</b><br/>1. sentence2.<br/>2. sentence3.</div>",tuple_1`
 
 #### 4. Process Annotations
 
