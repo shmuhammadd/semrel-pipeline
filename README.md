@@ -24,7 +24,6 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   With the generated tuples, you can now format them in a way that they can be uploaded for annotation.
     -   For Potato, use the Script:  [`potato_annotation_format.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/scripts/potato_annotation_format.py)
     -   For Label Studio use the Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
-    -   Ask Nedjma to add you to LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup.
     -   Use the Annotation guide [here](https://docs.google.com/document/d/1qwS9P-eRhgQw-JYMpWyOoTusBtuuxWCXEWnZZ-7LpBg/edit?usp=sharing)
     -   How much data to annotate? A few thousand instances per language are good (e.g., 3000).
     -   How many annotators? You can use multiple 2: 2 or 4 annotators
