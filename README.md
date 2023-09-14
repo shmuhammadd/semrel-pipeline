@@ -14,26 +14,30 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   The first step is to find sentences that are semantically related in a given corpus. There are many ways to achieve this, one way is lexical overlap, and here we have scripts for lexical overlap as a measure of semantic relatedness.
     -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
     -   Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
+      
 2.  **Generate Best-Worst-Scaling Tuples**:
     -   Once you have the semantically related sentence pairs, the next step is to generate tuples for best-worst-scaling annotation.
     -   Decide on on the N instances (sentence pairs) right at the beginning and generate 2N 4-tuples using the Best-Worst-Scaling script. Determine your N instances in one go and not add new instances later after annotation has begun.
     -   Script: [`generate-BWS-tuples.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/generate-BWS-tuples.pl)
     -   Visit Saif Mohammad's website for more details [here](https://www.saifmohammad.com/WebPages/BestWorst.html)
     -   \[optional\] Read the paper to understand more about Best--Worst Scaling [Best--Worst Scaling More Reliable than Rating Scales: A Case Study on Sentiment Intensity Annotation](https://www.saifmohammad.com/WebDocs/BWS-reliable-ACL2017.pdf)
-3.  **Format Tuples for Label Studio Annotation**:
-    -   With the generated tuples, you can now format them in a way that they can be uploaded to Label Studio for annotation.
-    -   Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
-    -   Ask Nedjma to add you to LabelStudio, and Shamsuddeen and Idris are happy to help configure your setup.
+3.  **Format Tuples for Annotation**:
+    -   With the generated tuples, you can now format them in a way that they can be uploaded for annotation.
+    -   For Potato, use the Script:  [`potato_annotation_format.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/scripts/potato_annotation_format.py)
+    -   For Label Studio use the Script: [`label_studio_annotation_format.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/label_studio_annotation_format.py)
     -   Use the Annotation guide [here](https://docs.google.com/document/d/1qwS9P-eRhgQw-JYMpWyOoTusBtuuxWCXEWnZZ-7LpBg/edit?usp=sharing)
     -   How much data to annotate? A few thousand instances per language are good (e.g., 3000).
     -   How many annotators? You can use multiple 2: 2 or 4 annotators
 4.  **Process Annotations**:
-    -   After completing the annotation in Label Studio, you can process the annotations using the following script.
-    -   Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
-5.  - **Calculate Semantic Relatedness Score**
-    -   Script: [`get-scores-from-BWS-annotations-counting.pl`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/Best-Worst-Scaling-Scripts/get-scores-from-BWS-annotations-counting.pl)
-6.  **Create Pairs and Scores**:
-    -   The final step is to create pairs and their corresponding scores based on the processed annotations.
+    -   After completing the annotation in Label Studio, you can process the annotations using the following Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
+    -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
+  
+      
+6.  **Calculate the Semantic Relatedness Pairs and Score, and the SHR score**
+    -   Run the following bash script: [`process_annotations.sh`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/process_annotations.sh)
+    -   After running the above bash, it will generate:
+
+        1. eating the The final step is to create pairs and their corresponding scores based on the processed annotations.
     -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
 
 ### Usage
@@ -94,7 +98,11 @@ python label_studio_annotation_format.py -i data/tuples.tsv -o data/
 
 #### 4. Process Annotations
 
-After annotation, export the files as `'.tsv'` and pass the file as input to the following script.
+After annotation and you are using LabelStudio, export the annotation file files as `'.tsv'`.
+
+After annotation, and you are using Potato, export the annotation.
+
+Run the following script and it will generate x and y:
 
 ``` bash
 python process_annotations.py -i data/exported_annotations.tsv -o data/
