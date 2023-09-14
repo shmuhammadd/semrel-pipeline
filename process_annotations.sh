@@ -1,6 +1,15 @@
-export DATA_FILE=darija/darija_annotations.tsv
-export ANNOTATION_TOOL=potato
-export OUTPUT_DIR=darija
+while getopts a:t:o: flag
+do
+    case "${flag}" in
+        a) annotations=${OPTARG};;
+        t) tool=${OPTARG};;
+        o) output=${OPTARG};;
+    esac
+done
+
+export DATA_FILE=$annotations
+export ANNOTATION_TOOL=$tool
+export OUTPUT_DIR=$output
 
 python scripts/process_annotations.py \
   -i $DATA_FILE \
