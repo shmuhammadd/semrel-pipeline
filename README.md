@@ -77,10 +77,18 @@ perl generate-BWS-tuples.pl [OPTIONS]
 | sentence1. \t sentence2. | sentence1. \t sentence3. | sentence1. \t sentence4. | sentence2. \t sentence3. |
 | sentence3. \t sentence4. | sentence2. \t sentence4. | sentence1. \t sentence4. | sentence1. \t sentence2. |
 
-#### 3. Format Tuples for Label Studio Annotation
+#### 3. Format Tuples for Annotation
+
+For label Studio:
 
 ``` bash
 python label_studio_annotation_format.py -i [INPUT_TUPLES] -o [OUTPUT_PATH]
+```
+
+For Potate:
+
+``` bash
+python potato_annotation_format.py -i [INPUT_TUPLES] -o [OUTPUT_PATH]
 ```
 
 Where - `INPUT_TUPLES`: Path to the tsv file containing the tuples. - `OUTPUT_PATH`: Output path for the annotation samples.
@@ -93,12 +101,17 @@ python label_studio_annotation_format.py -i data/tuples.tsv -o data/
 
 **OUTPUT**
 
+Below is an example of LabelStudio Output. 
+
 -   `'data/label_studio_annotation_samples.tsv'` -- tsv file containing semantically related pairs ready for Label Studio upload. E.g.
 
 | pair1a     | pair1b     | pair2a     | pair2b     | pair3a     | pair3b     | pair4a     | pair4b     |
 |------------|------------|------------|------------|------------|------------|------------|------------|
 | sentence1. | sentence2. | sentence1. | sentence3. | sentence1. | sentence4. | sentence2. | sentence3. |
 | sentence3. | sentence4. | sentence2. | sentence4. | sentence1. | sentence4. | sentence1. | sentence2. |
+
+
+"<div class=""tuple""><b>PAIR A</b><br/>1. sentence1.<br/>2. sentence2 </div><br/><div class=""tuple""><b>PAIR B</b><br/>1. sentence1.  <br/>2. sentence3.</div><br/><div class=""tuple""><b>PAIR C</b><br/>1. sentence1 <br/>2.sentence4.</div><br/><div class=""tuple""><b>PAIR D</b><br/>1. sentence2.<br/>2. sentence3.</div>",tuple_1
 
 #### 4. Process Annotations
 
