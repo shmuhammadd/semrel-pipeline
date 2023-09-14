@@ -33,13 +33,17 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
   
       
-6.  **Calculate the Semantic Relatedness Pairs and Score, and the SHR score**
+5.  **Calculate the Semantic Relatedness Pairs and Score, and the SHR score**
     -   Run the following bash script: [`process_annotations.sh`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/process_annotations.sh)
-    -   After running the above bash, it will generate:
-
-        1. eating the The final step is to create pairs and their corresponding scores based on the processed annotations.
-    -   Script: [`create_pair_and_scores.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/create_pair_and%20scores.py)
-
+    -   After running the above bash, it will generate multiple files below:
+        1. Mapping between Pair and ID: `id_to_item.csv`
+        2. Annotations by ID: `annotation_to_eval.csv`
+        3. Semantic Relatedness PairID and Score: `pair_id-scores.csv`
+        4. Semantic Relatedness Pairs and Score: `scored_annotations.tsv`
+    - The Split Half Reliability Score (SHR score) will be printed on the screen.
+    - Finally, the `scored_annotations.tsv` will be use for the shared task.
+     
+    
 ### Usage
 
 #### 1. Find Semantically Related Sentences
