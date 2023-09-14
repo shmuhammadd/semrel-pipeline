@@ -10,13 +10,35 @@ def get_or_assign_id(item):
     current_id += 1
   return item_to_id[item]
 
+def process_label_studio_annotations(df):
+  # select the required columns
+  try:
+    df = df[['pair1a', 'pair1b', 'pair2a', 'pair2b', 'pair3a', 'pair3b', 'pair4a', 'pair4b', 'best-pair', 'worst-pair']]
+  except:
+    sys.exit('Could not find the required columns in the input file. Please check the file format.')
+
+  # merge the columns to form item pairs
+  new_data = {
+      'A': df['pair1a'] + '\\n' + df['pair1b'],
+      'B': df['pair2a'] + '\\n' + df['pair2b'],
+      'C': df['pair3a'] + '\\n' + df['pair3b'],
+      'D': df['pair4a'] + '\\n' + df['pair4b'],
+      'best-pair': df['best-pair'],
+      'worst-pair': df['worst-pair']
+  }
+
+  # create a new dataframe with the merged columns
+  return pd.DataFrame(new_data)
+  
 parser = argparse.ArgumentParser(description='Process semantic relatedness annotations from Label Studio.')
 parser.add_argument('-i', '--input', required=True, type=str, help='csv or tsv file containing the annotations.')
 parser.add_argument('-o', '--output', required=True, type=str, help='output directory for the processed annotations.')
+parser.add_argument('-t', '--annotation_tool', required=True, choices=['label-studio', 'potato'], help='annotation tool.')
 
 args = parser.parse_args()
 annotations = args.input
 output_dir = args.output
+a_tool = args.annotation_tool
 
 # create the output directory if it does not exist
 if not os.path.exists(output_dir):
@@ -35,24 +57,18 @@ except:
   except:
     sys.exit('Could not read the input file. Please check the file format.')
 
-# select the required columns
-try:
-  df = df[['pair1a', 'pair1b', 'pair2a', 'pair2b', 'pair3a', 'pair3b', 'pair4a', 'pair4b', 'best-pair', 'worst-pair']]
-except:
-  sys.exit('Could not find the required columns in the input file. Please check the file format.')
+# process annotations if they are from label studio
+if a_tool == 'label-studio':
+  df = process_label_studio_annotations(df)
+else:
+  df = df[['A', 'B', 'C', 'D', 'best-pair', 'worst-pair']]
 
-# merge the columns to form item pairs
-new_data = {
-    'A': df['pair1a'] + '\\n' + df['pair1b'],
-    'B': df['pair2a'] + '\\n' + df['pair2b'],
-    'C': df['pair3a'] + '\\n' + df['pair3b'],
-    'D': df['pair4a'] + '\\n' + df['pair4b'],
-    'best-pair': df['best-pair'],
-    'worst-pair': df['worst-pair']
-}
+# remove empty annotations
+print('Data size before preprocessing:', len(df))
 
-# create a new dataframe with the merged columns
-df = pd.DataFrame(new_data)
+df = df.dropna()
+df = df[~df.apply(lambda row: row.str.contains('-')).any(axis=1)]
+print('Data size after preprocessing:', len(df))
 
 # replace the best-pair and worst-pair labels with the actual item pairs
 df['best-pair'] = df.apply(lambda row: row[row['best-pair']], axis=1)
@@ -79,7 +95,7 @@ for col in df.columns:
 id_df = pd.DataFrame(item_to_id.items(), columns=['item', 'id'])
 
 # save the processed annotations and the index to item mapping
-df.to_csv(os.path.join(output_dir, 'annotation_to_eval.tsv'), sep='\t', index=False)
-id_df.to_csv(os.path.join(output_dir, 'id_to_item.tsv'), sep='\t', index=False)
+df.to_csv(os.path.join(output_dir, 'annotation_to_eval.csv'), index=False)
+id_df.to_csv(os.path.join(output_dir, 'id_to_item.csv'), index=False)
 
-print('saved processed files to:', os.path.join(output_dir, 'annotation_to_eval.tsv'), 'and', os.path.join(output_dir, 'id_to_item.tsv'))
+print('saved processed files to:', os.path.join(output_dir, 'annotation_to_eval.csv'), 'and', os.path.join(output_dir, 'id_to_item.csv'))

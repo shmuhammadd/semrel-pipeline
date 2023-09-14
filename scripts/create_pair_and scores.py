@@ -44,6 +44,9 @@ except:
 # merge the id to item mapping with the scored annotations on the item id
 scored_annotations = pd.merge(scored_annotations, id_to_item, on='id', how='inner')
 
+# rescaling the semantic scores to 0-1 range
+scored_annotations['score'] = (scored_annotations['score'] + 1) / 2
+
 # save the processed annotations
 scored_annotations[['item', 'score']].to_csv(os.path.join(output_dir, 'scored_annotations.tsv'), sep='\t', index=False)
 
