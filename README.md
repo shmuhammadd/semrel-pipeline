@@ -14,6 +14,7 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   The first step is to find sentences that are semantically related in a given corpus. There are many ways to achieve this, one way is lexical overlap, and here we have scripts for lexical overlap as a measure of semantic relatedness.
     -   Script: [`semantic_relatedness.py`](https://github.com/shmuhammadd/semantic_relatedness/blob/main/scripts/semantic_relatedness.py)
     -   Read the paper [What Makes Sentences Semantically Related? A Textual Relatedness Dataset and Empirical Study](https://arxiv.org/pdf/2110.04845.pdf) which motivates this shared task.
+      
 2.  **Generate Best-Worst-Scaling Tuples**:
     -   Once you have the semantically related sentence pairs, the next step is to generate tuples for best-worst-scaling annotation.
     -   Decide on on the N instances (sentence pairs) right at the beginning and generate 2N 4-tuples using the Best-Worst-Scaling script. Determine your N instances in one go and not add new instances later after annotation has begun.
