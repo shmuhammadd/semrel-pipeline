@@ -29,7 +29,7 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   How much data to annotate? A few thousand instances per language are good (e.g., 3000).
     -   How many annotators? You can use multiple 2: 2 or 4 annotators
 4.  **Process Annotations**:
-    -   After completing the annotation in Label Studio, you can process the annotations using the following Script: [`process_annotations.py`](https://github.com/shmuhammadd/labelstudio-semrel-pipeline/blob/main/scripts/process_annotations.py)
+    -   After completing the annotation in Label Studio, export the annotation in `tsv` format
     -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
   
       
