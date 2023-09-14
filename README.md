@@ -33,7 +33,7 @@ This repository provides a pipeline to find pairs of sentences that are likely t
     -   For Potato, after the annotation, run the following script on the server to export the formatted annotations: [`export_potato_annotations.py`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/export_potato_annotations.py)
   
       
-5.  **Calculate the Semantic Relatedness Pairs and Score, and the SHR score**
+5.  **Generate the Semantic Relatedness Pairs and Score, and the SHR score**
     -   Run the following bash script: [`process_annotations.sh`](https://github.com/shmuhammadd/semrel-pipeline/blob/main/process_annotations.sh)
     -   After running the above bash, it will generate multiple files below:
         1. Mapping between Pair and ID: `id_to_item.csv`
@@ -117,64 +117,81 @@ Below is an example of Potato Output.
 
 #### 4. Process Annotations
 
-After annotation and you are using LabelStudio, export the annotation file files as `'.tsv'`.
-
-After annotation, and you are using Potato, export the annotation.
-
-Run the following script and it will generate x and y:
+After annotation, and you are using Potato, export the annotation from the Server using the following script.
 
 ``` bash
-python process_annotations.py -i data/exported_annotations.tsv -o data/
+python export_potato_annotation.py ANNOTATION_PATH OUTPUT_DIR
+
 ```
+
+For LabelStudio, download the `tsv` of the annotated file.
+
+
+#### 5. Generate the Semantic Relatedness Pairs and Score, and the SHR score
+
+You can use the following format to generate what is described in step 5 above.
+
+``` bash
+bash process_annotations.sh -a PROCESSED_ANNOTATIONS -t ANNOTATION_TOOL -o OUPUT_DIR
+
+```
+
+Where:
+
+`PROCESSED_ANNOTATIONS`: file generated in step 4
+`ANNOTATION_TOOL:` 'label-studio' or 'potato'
+`OUPUT_DIR:` Output directory
+
+For example, 
+
+``` bash
+bash process_annotations.sh -a PROCESSED_ANNOTATIONS -t ANNOTATION_TOOL -o OUPUT_DIR
+```
+
 
 **OUTPUT**
 
--   `'data/id_to_item.tsv'` -- containing the sentence pairs and their IDs. E.g.
+-   The files listed in step 5 above and the SHR score printed on the console.
 
-| item                                      | id  |
+1. Mapping between Pair and ID: `id_to_item.csv`
+        2. Annotations by ID: `annotation_to_eval.csv`
+        3. Semantic Relatedness PairID and Score: `pair_id-scores.csv`
+        4. Semantic Relatedness Pairs and Score: `scored_annotations.tsv`
+    - The Split Half Reliability Score (SHR score) will be printed on the screen.
+    - Finally, the `scored_annotations.tsv` will be use for the shared task.
+
+Example of file `id_to_item.csv`: 
+
+| item | id |
 |-------------------------------------------|-----|
-| this is sentence1. \\n this is sentence2. | 1   |
-| this is sentence3. \\n this is sentence4. | 2   |
-| this is sentence5. \\n this is sentence6. | 3   |
+| this is sentence1. \\n this is sentence2. | 1 |
+| this is sentence3. \\n this is sentence4. | 2 |
+| this is sentence5. \\n this is sentence6. | 3 |
 
--   `'data/annotation_to_eval.tsv'` -- containing the sentence pairs (listed by IDs) and their best-pair and worst-pair annotations. E.g.
+Example of file `annotation_to_eval.csv`: 
 
 | Item1 | Item2 | Item3 | Item4 | BestItem | WorstItem |
 |-------|-------|-------|-------|----------|-----------|
-| 1     | 2     | 3     | 4     | 1        | 2         |
-| 1     | 5     | 6     | 7     | 6        | 5         |
+| 1 | 2 | 3 | 4 | 1 | 2 |
+| 1 | 5 | 6 | 7 | 6 | 5 |
 
-#### 5. Calculate Semantic Relatedness Score
+Example of file `pair_id-scores.csv`: 
 
-``` bash
-perl get-scores-from-BWS-annotations-counting.pl data/annotation_to_eval.tsv data/pairs-scores.tsv
-```
-
-**OUTPUT**
-
--   `'data/pairs-scores.tsv'` -- file containing the sentence pairs (listed by IDs) and their semantic relatedness scores. E.g.
-
-| id  | score |
+| id | score |
 |-----|-------|
-| 1   | 1.0   |
-| 2   | 0.75  |
-| 3   | 0.5   |
+| 1 | 1.0 |
+| 2 | 0.75 |
+| 3 | 0.5 |
 
-#### 6. Create Pairs and Scores
+Example of file `scored_annotations.tsv`: 
 
-``` bash
-python create_pair_and_scores.py -i data/id_to_item.tsv -s data/pairs-scores.tsv -o data
-```
 
-**OUTPUT**
-
--   `'data/scored_annotations.tsv'` -- file containing the sentence pairs (listed by IDs) and their semantic relatedness scores. E.g.
-
-| item                                      | score |
+| item | score |
 |-------------------------------------------|-------|
-| this is sentence1. \\n this is sentence2. | 1.0   |
-| this is sentence3. \\n this is sentence4. | 0.75  |
-| this is sentence5. \\n this is sentence6. | 0.5   |
+| this is sentence1. \\n this is sentence2. | 1.00 |
+| this is sentence3. \\n this is sentence4. | 0.75 |
+| this is sentence5. \\n this is sentence6. | 0.5 |
+
 
 ### Note
 
