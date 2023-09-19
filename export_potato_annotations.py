@@ -40,7 +40,7 @@ def get_annotations(ann_path):
         "id": id,
         "A": f"{clean_text(paira[0])}\\n{clean_text(paira[1])}",
         "B": f"{clean_text(pairb[0])}\\n{clean_text(pairb[1])}",
-        "C": f"{clean_text(pairc[0])}\\n{clean_text(pairb[1])}",
+        "C": f"{clean_text(pairc[0])}\\n{clean_text(pairc[1])}",
         "D": f"{clean_text(paird[0])}\\n{clean_text(paird[1])}",
         "best-pair": best,
         "worst-pair": worst
