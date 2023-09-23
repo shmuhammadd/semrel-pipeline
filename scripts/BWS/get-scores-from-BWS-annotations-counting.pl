@@ -136,7 +136,7 @@ print STDERR "\nWriting the best set of tuples to $file_output ...\n";
 
 open(OUTF, ">$file_output") or die("Cannot open the output file $file_output: $!\n");
 foreach my $item (sort { $scores{$b} <=> $scores{$a} } keys %scores) {
-    printf OUTF "%s\t%.3f\n", $item, $scores{$item};
+    printf OUTF "%s,%.3f\n", $item, $scores{$item};
 }
 close(OUTF);
 
