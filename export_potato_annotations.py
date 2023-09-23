@@ -3,6 +3,8 @@ import jsonlines
 import re
 import os
 
+import argparse
+
 def clean_text(text):
   text = re.sub(r'<.*?>', '', text)
   text = re.sub(r'\d+\.\s*', '', text)
@@ -47,15 +49,18 @@ def get_annotations(ann_path):
 
   return pd.DataFrame(data)
 
-data_dir = 'kinyarwanda/sem-rel/annotation_output'
+parser = argparse.ArgumentParser()
+parser.add_argument('-a', '--annotation_dir', type=str, required=True, help='path to the directory containing the annotation_output folders')
+parser.add_argument('-o', '--output_file', type=str, required=True, help='path to the output file')
+args = parser.parse_args()
+
+data_dir = args.annotation_dir
 anns = os.listdir(data_dir)
 anns = [a for a in anns if '@' in a]
 df = pd.DataFrame()
 
 for ann in anns:
-  ann_file = os.path.join(data_dir, ann, 'annotated_instances.jsonl')
-  if os.path.isfile(ann_file):
-    df = pd.concat([df, get_annotations(ann_file)])
+  df = pd.concat([df, get_annotations(os.path.join(data_dir, ann, 'annotated_instances.jsonl'))])
 
 print(len(df), 'annotations')
 
@@ -71,5 +76,5 @@ df = df[df['id'].map(id_counts).mod(2) == 0]
 print(id_counts.max(), 'maximum annotations')
 print(len(df), 'number of annotations after removing odds')
 
-df.to_csv(os.path.join(data_dir, 'kinyarwanda_annotations.tsv'), sep='\t', index=False)
+df.to_csv(os.path.join(args.output_file, 'processed_annotations.tsv'), sep='\t', index=False)
 print('saved', len(df), 'annotations')
